@@ -18,6 +18,8 @@
 
 namespace App\Controllers;
 
+use SON\Controller\Action;
+
 /**
  * Index Controller
  * 
@@ -30,7 +32,7 @@ namespace App\Controllers;
  * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GPL
  * @link      none
  */
-class IndexController {
+class IndexController extends Action {
 
     /** 
      * Index
@@ -56,32 +58,6 @@ class IndexController {
      */
     public function contact() {
         $this->render('contact');
-    }
-    
-    /** 
-     * Render
-     * 
-     * Este método ajuda na execução de renderização das páginas
-     * 
-     * @access public 
-     * 
-     * @return array
-     */
-    public function render($action){
-        $current = get_class($this);
-        $singleClassName = strtolower(
-            (str_replace(
-                "Controller",
-                "",
-                str_replace(
-                    "App\\Controllers\\",
-                    "",
-                    $current)
-                )
-            )
-        );
-        
-        include_once __DIR__ . '/../Views/'.$singleClassName.'/'.$action.'.phtml';
     }
 
 }
