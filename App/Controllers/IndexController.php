@@ -19,6 +19,8 @@
 namespace App\Controllers;
 
 use SON\Controller\Action;
+use App\Models\Client;
+use App\Conn;
 
 /**
  * Index Controller
@@ -44,6 +46,10 @@ class IndexController extends Action {
      * @return string
      */
     public function index() {
+        
+        $client = new Client(Conn::getDb());
+        $this->views->clients = $client->fetchAll();
+        
         $this->render('index');
     }
 
